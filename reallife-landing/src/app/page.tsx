@@ -1,19 +1,23 @@
+import Navigation from '@/components/sections/Navigation';
+import Hero from '@/components/sections/Hero';
+import Problem from '@/components/sections/Problem';
+import Solution from '@/components/sections/Solution';
+import HowItWorks from '@/components/sections/HowItWorks';
+import Mission from '@/components/sections/Mission';
+import CTA from '@/components/sections/CTA';
+import Footer from '@/components/sections/Footer';
+
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <div className="flex min-h-screen items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-7xl font-bold mb-6 gradient-text">
-            RealLife
-          </h1>
-          <p className="text-2xl text-gray-400">
-            Break Free from Endless Scrolling
-          </p>
-          <p className="mt-8 text-sm text-gray-500">
-            Landing page coming soon...
-          </p>
-        </div>
-      </div>
+      <Navigation />
+      <Hero />
+      <Problem />
+      <Solution />
+      <HowItWorks />
+      <Mission />
+      <CTA />
+      <Footer />
     </main>
   );
 }
