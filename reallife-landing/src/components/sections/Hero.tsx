@@ -71,7 +71,7 @@ export default function Hero() {
                 showCursor={true}
                 cursorCharacter=" "
                 typingSpeed={100}
-                initialDelay={2000}
+                initialDelay={500}
                 pauseDuration={1500}
                 deletingSpeed={50}
                 className="text-transparent bg-gradient-to-r from-white via-cyan-200 to-blue-200 bg-clip-text leading-relaxed inline-block pb-2"

@@ -6,7 +6,7 @@ import PhoneMockup from '@/components/shared/PhoneMockup';
 import { Users, Eye, Clock, ChevronDown } from 'lucide-react';
 import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
-import { ColourfulText } from '@/components/ui/shadcn-io/colourful-text';
+import FuzzyText from '@/components/ui/shadcn-io/fuzzy-text';
 import { useState, useEffect } from 'react';
 
 export default function Problem() {
@@ -40,23 +40,21 @@ export default function Problem() {
           viewport={{ once: true }}
           className="text-4xl md:text-5xl lg:text-6xl font-bold mb-12 md:mb-16 text-gray-900"
         >
-          You&apos;re Not Weak.
+          You're Not Weak.
           <br />
-          <span>You're </span>
-          <ColourfulText
-            text="Trapped."
-            colors={[
-              'rgb(147, 51, 234)',  // purple-600
-              'rgb(219, 39, 119)',  // pink-600
-              'rgb(236, 72, 153)',  // pink-500
-              'rgb(249, 115, 22)',  // orange-500
-              'rgb(168, 85, 247)',  // purple-500
-              'rgb(236, 72, 153)',  // pink-500
-            ]}
-            interval={3000}
-            animationDuration={0.6}
-            staggerDelay={0.08}
-          />
+
+          <span className="inline-flex items-center">
+            <FuzzyText
+              fontSize="clamp(2rem, 5vw, 4rem)"
+              fontWeight={1000}
+              color="#dc2626"
+              enableHover={true}
+              baseIntensity={0.2}
+              hoverIntensity={0.8}
+            >
+            You're Trapped.
+            </FuzzyText>
+          </span>
         </motion.h2>
 
         {/* Stat Cards */}

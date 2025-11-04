@@ -5,42 +5,74 @@ import FeatureCard from '@/components/shared/FeatureCard';
 import PhoneMockup from '@/components/shared/PhoneMockup';
 import { BarChart3, Bell, Sparkles, Trophy, Brain, Heart, Smile, ChevronDown } from 'lucide-react';
 import { Card } from '@/components/ui/card';
+import { SparklesCore } from '@/components/ui/shadcn-io/sparkles';
+import { ColourfulText } from '@/components/ui/shadcn-io/colourful-text';
 
 export default function Solution() {
   return (
-    <section id="solution" className="min-h-screen py-24 relative bg-gradient-to-b from-emerald-50/30 via-green-50/20 to-emerald-50/30 overflow-hidden">
-      {/* Positive themed accent glow effects */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-emerald-200/50 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-green-200/50 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '5s' }} />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-100/30 rounded-full blur-3xl" />
+    <section id="solution" className="min-h-screen py-24 relative overflow-hidden">
+      {/* Purple/Pink gradient background like Hero */}
+      <div className="absolute inset-0 bg-dark" />
 
-      {/* Success icon decoration */}
-      <div className="absolute top-8 left-8 opacity-5">
-        <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-emerald-500">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
+      {/* Sparkles filling entire section */}
+      <div className="absolute inset-0 w-full h-full">
+        <SparklesCore
+          id="solution-sparkles"
+          background="transparent"
+          minSize={0.4}
+          maxSize={1}
+          particleDensity={100}
+          className="w-full h-full"
+          particleColor="#FFFFFF"
+        />
       </div>
 
-      <div className="container mx-auto px-8 relative z-10">
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-5xl md:text-6xl font-bold text-center mb-8"
-        >
-          Meet Scrollless
-        </motion.h2>
+      {/* Main heading */}
+      <motion.h1
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="text-4xl md:text-6xl lg:text-7xl font-bold text-center text-white relative z-20 mb-8 pt-12"
+      >
+        Meet <ColourfulText
+          text="Scrolless"
+          interval={3000}
+          animationDuration={0.8}
+          colors={[
+            'rgb(196, 181, 253)', // purple-300
+            'rgb(167, 139, 250)', // purple-400
+            'rgb(252, 165, 165)', // red-300
+            'rgb(251, 207, 232)', // pink-200
+            'rgb(244, 114, 182)', // pink-400
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="text-xl md:text-2xl text-gray-400 text-center mb-24 max-w-3xl mx-auto"
-        >
-          Your AI-powered digital wellness coach that identifies, notifies, and helps you modify habits for a healthier digital life.
-        </motion.p>
+          ]}
+        />
+      </motion.h1>
+
+      {/* Gradients centered under heading */}
+      <div className="relative z-20 w-full mb-16">
+        <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[600px] max-w-]">
+          <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-purple-400 to-transparent h-[2px] w-3/4 blur-sm" />
+          <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-purple-400 to-transparent h-px w-3/4" />
+          <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-pink-400 to-transparent h-[5px] w-1/4 blur-sm" />
+          <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-pink-400 to-transparent h-px w-1/4" />
+        </div>
+
+      </div>
+
+      {/* Description */}
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        viewport={{ once: true }}
+        className="text-xl md:text-2xl text-gray-200 text-center mb-24 max-w-3xl mx-auto relative z-20 px-8"
+      >
+        Your AI-powered digital wellness coach that identifies, notifies, and helps you modify habits for a healthier digital life.
+      </motion.p>
+
+      <div className="container mx-auto px-8 relative z-10">
 
         {/* Main feature showcase */}
         <div className="relative max-w-7xl mx-auto mb-32">
@@ -151,10 +183,10 @@ export default function Solution() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <Card className="p-6 text-center bg-dark-lighter border-white/10 hover:border-white/20 transition-colors">
-              <Brain className="w-12 h-12 mx-auto mb-4 text-purple-400" />
-              <h3 className="font-bold text-lg mb-2">AI-Powered Breakdown</h3>
-              <p className="text-sm text-gray-400">Lowers cognitive load</p>
+            <Card className="p-6 text-center bg-white/10 backdrop-blur-xl border-white/20 hover:border-white/40 transition-colors">
+              <Brain className="w-12 h-12 mx-auto mb-4 text-purple-300" />
+              <h3 className="font-bold text-lg mb-2 text-white">AI-Powered Breakdown</h3>
+              <p className="text-sm text-gray-300">Lowers cognitive load</p>
             </Card>
           </motion.div>
 
@@ -164,10 +196,10 @@ export default function Solution() {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <Card className="p-6 text-center bg-dark-lighter border-white/10 hover:border-white/20 transition-colors">
-              <Heart className="w-12 h-12 mx-auto mb-4 text-pink-400" />
-              <h3 className="font-bold text-lg mb-2">Builds Action Inertia</h3>
-              <p className="text-sm text-gray-400">Focuses on the first step</p>
+            <Card className="p-6 text-center bg-white/10 backdrop-blur-xl border-white/20 hover:border-white/40 transition-colors">
+              <Heart className="w-12 h-12 mx-auto mb-4 text-pink-300" />
+              <h3 className="font-bold text-lg mb-2 text-white">Builds Action Inertia</h3>
+              <p className="text-sm text-gray-300">Focuses on the first step</p>
             </Card>
           </motion.div>
 
@@ -177,10 +209,10 @@ export default function Solution() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <Card className="p-6 text-center bg-dark-lighter border-white/10 hover:border-white/20 transition-colors">
-              <Smile className="w-12 h-12 mx-auto mb-4 text-green-400" />
-              <h3 className="font-bold text-lg mb-2">Positive Feedback Loop</h3>
-              <p className="text-sm text-gray-400">Replaces anxiety with achievement</p>
+            <Card className="p-6 text-center bg-white/10 backdrop-blur-xl border-white/20 hover:border-white/40 transition-colors">
+              <Smile className="w-12 h-12 mx-auto mb-4 text-cyan-300" />
+              <h3 className="font-bold text-lg mb-2 text-white">Positive Feedback Loop</h3>
+              <p className="text-sm text-gray-300">Replaces anxiety with achievement</p>
             </Card>
           </motion.div>
         </div>
@@ -201,7 +233,7 @@ export default function Solution() {
             ?.scrollIntoView({ behavior: "smooth" })
         }
       >
-        <ChevronDown className="w-8 h-8 text-emerald-400" />
+        <ChevronDown className="w-8 h-8 text-white/60" />
       </motion.div>
     </section>
   );
