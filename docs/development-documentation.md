@@ -1,8 +1,8 @@
 # RealLife Landing Page - Development Documentation
 
 **Project**: RealLife/Scrollless Landing Page for ZPIRE Jumpstarter Competition
-**Tech Stack**: Next.js 15 + React 18 + TypeScript + Tailwind CSS + Framer Motion
-**Last Updated**: 2025-01-04
+**Tech Stack**: Next.js 16 + React 18 + TypeScript + Tailwind CSS + Framer Motion
+**Last Updated**: 2025-01-04 (Updated with Bubble Background)
 
 ---
 
@@ -50,7 +50,10 @@ reallife-landing/
 │   │   ├── ui/                  # shadcn/ui components
 │   │   │   ├── button.tsx
 │   │   │   ├── card.tsx
-│   │   │   └── input.tsx
+│   │   │   ├── input.tsx
+│   │   │   └── shadcn-io/
+│   │   │       └── bubble-background/
+│   │   │           └── index.tsx  # Animated bubble background
 │   │   ├── sections/            # Page sections (main content)
 │   │   │   ├── Navigation.tsx
 │   │   │   ├── Hero.tsx
@@ -85,7 +88,7 @@ reallife-landing/
 
 | Package | Version | Purpose |
 |---------|---------|---------|
-| `next` | 15.0.0 | React framework with App Router |
+| `next` | 16.0.1 | React framework with App Router (Turbopack) |
 | `react` | ^18 | UI library |
 | `typescript` | ^5 | Type safety |
 | `tailwindcss` | ^3.4.1 | Utility-first CSS |
@@ -109,8 +112,41 @@ npm install framer-motion gsap react-intersection-observer lucide-react react-co
 # Initialize shadcn/ui
 npx shadcn@latest init --yes --defaults
 
-# Add shadcn components
+# Add shadcn UI components
 npx shadcn@latest add button card input --yes
+
+# Add shadcn registry components (backgrounds, effects, etc.)
+npx shadcn@latest add https://www.shadcn.io/registry/bubble-background.json
+```
+
+### Adding shadcn Registry Components
+
+shadcn.io provides additional components beyond the standard UI library:
+
+**Available Registries**:
+- Backgrounds: `bubble-background`, `gradient-background`, etc.
+- Effects: Various visual effects and animations
+- Layouts: Advanced layout components
+
+**How to Add**:
+```bash
+# Generic format
+npx shadcn@latest add https://www.shadcn.io/registry/[component-name].json
+
+# Example: Bubble background
+npx shadcn@latest add https://www.shadcn.io/registry/bubble-background.json
+```
+
+**Post-Installation Fixes**:
+After adding registry components, you may need to fix imports:
+```tsx
+// Change from:
+import { cn } from '@repo/shadcn-ui/lib/utils';
+import { motion } from 'motion/react';
+
+// To:
+import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
 ```
 
 ---
@@ -292,28 +328,71 @@ useEffect(() => {
 **Height**: 100vh
 
 **Key Features**:
-- Split-screen comparison (trapped vs. free)
-- Animated gradient orbs in background
-- Center overlay with headline + CTAs
+- **Bubble Background Animation** - Liquid-like metaball effect with SVG filters
+- Split-screen comparison (trapped vs. free) with dramatic styling
+- Center overlay with gradient headline + CTAs
 - Scroll indicator at bottom
 
+**Bubble Background Component**:
+Uses the shadcn bubble-background component with custom colors:
+```tsx
+import { BubbleBackground } from '@/components/ui/shadcn-io/bubble-background';
+
+<BubbleBackground
+  className="absolute inset-0"
+  interactive={false}
+  colors={{
+    first: '102,126,234',     // purple-deep
+    second: '118,75,162',      // purple-mid
+    third: '240,147,251',      // pink-bright
+    fourth: '246,173,85',      // orange-accent
+    fifth: '139,92,246',       // violet
+    sixth: '236,72,153',       // fuchsia
+  }}
+/>
+```
+
+**Technical Details**:
+- **SVG Metaball Filter**: Uses `feGaussianBlur` + `feColorMatrix` for liquid merging effect
+- **6 Animated Orbs**: Each with unique motion patterns (vertical, orbital, horizontal)
+- **Mix-blend-hard-light**: Creates realistic color blending
+- **GPU Accelerated**: Framer Motion transforms for 60fps performance
+
+**Split-Screen Cards**:
+- **Left (Trapped)**: Dark red gradient, pulsing warning glow, warning badge
+- **Right (Free)**: Bright green gradient, animated success glow, success badge
+- **Animations**: Pulsing icons, rotating effects, opacity transitions
+- **No borders**: Clean design with shadow-only effects
+
 **Animation Timeline**:
-1. Background orbs fade in (0-1s)
+1. Bubble background starts flowing immediately
 2. Split screens slide in from sides (0.5-1.5s)
-3. Headline fades up (1-2s)
-4. CTAs pop in (1.6-2.2s)
+3. Headline fades up with gradient pulse (1-2s)
+4. CTAs pop in with scale effect (1.6-2.2s)
 5. Scroll indicator pulses (2s+)
+
+**Installation**:
+```bash
+npx shadcn@latest add https://www.shadcn.io/registry/bubble-background.json
+```
 
 **Customization Points**:
 ```tsx
-// Replace emoji placeholders with actual images/videos
-<div className="text-6xl mb-4">📱</div>  // Replace with video or image
+// Enable mouse-following bubble
+<BubbleBackground interactive={true} />
+
+// Adjust spring physics
+transition={{ stiffness: 100, damping: 20 }}
+
+// Change colors (RGB format)
+colors={{ first: '255,0,0', ... }}
 ```
 
 **Future Enhancements**:
-- [ ] Replace emojis with actual video loops
+- [ ] Replace emojis with actual video loops or images
 - [ ] Add parallax mouse tracking on headline
-- [ ] Implement particle system background
+- [ ] Enable interactive mode for mouse-following bubble
+- [ ] Add more bubble color variations
 
 ---
 
@@ -975,6 +1054,16 @@ All design tokens should be defined in:
 
 ## Changelog
 
+### Version 1.1.0 (2025-01-04) - Hero Section Enhancement
+- ✨ Added **Bubble Background** component with metaball liquid effects
+- 🎨 Enhanced Hero section with dramatic split-screen styling
+- 💫 Implemented SVG filters for realistic color blending
+- 🚀 Updated to Next.js 16.0.1 with Turbopack
+- 🔒 Fixed security vulnerabilities
+- 📦 Added shadcn registry component support
+- 🎯 Removed borders from split-screen cards for cleaner design
+- ✅ All builds passing successfully
+
 ### Version 1.0.0 (2025-01-04)
 - ✅ Initial landing page implementation
 - ✅ All 7 sections completed
@@ -986,5 +1075,5 @@ All design tokens should be defined in:
 ---
 
 **Document Maintained By**: Development Team
-**Last Review**: 2025-01-04
+**Last Review**: 2025-01-04 (Hero Section Update)
 **Next Review**: Before Phase 2 Implementation
