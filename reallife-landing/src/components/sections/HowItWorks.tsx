@@ -191,14 +191,14 @@ export default function HowItWorks() {
                           <div className="flex-1">
                             <div className="font-bold text-gray-800 mb-1">RealLife</div>
                             <div className="text-sm text-gray-600">
-                              You've been scrolling for 15 minutes. Ready to work on your goal?
+                              You&apos;ve been scrolling for 15 minutes. Ready to work on your goal?
                             </div>
                             <div className="flex gap-2 mt-3">
                               <button className="px-3 py-1 bg-gray-200 text-gray-600 rounded-lg text-xs">
                                 Maybe Later
                               </button>
                               <button className="px-3 py-1 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg text-xs font-semibold">
-                                Let's Go!
+                                Let&apos;s Go!
                               </button>
                             </div>
                           </div>

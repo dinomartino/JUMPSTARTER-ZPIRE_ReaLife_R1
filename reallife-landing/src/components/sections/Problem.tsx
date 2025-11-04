@@ -23,10 +23,10 @@ export default function Problem() {
           viewport={{ once: true }}
           className="text-5xl md:text-6xl font-bold mb-16"
         >
-          You're Not Weak.
+          You&apos;re Not Weak.
           <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-pink-600">
-            You're Trapped.
+            You&apos;re Trapped.
           </span>
         </motion.h2>
 

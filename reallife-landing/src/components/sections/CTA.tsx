@@ -116,9 +116,9 @@ export default function CTA() {
                 className="p-8 rounded-2xl bg-gradient-to-br from-green-500/20 to-blue-500/20 border border-green-500/50 mb-16"
               >
                 <div className="text-6xl mb-4">🎉</div>
-                <h3 className="text-3xl font-bold mb-2">You're on the list!</h3>
+                <h3 className="text-3xl font-bold mb-2">You&apos;re on the list!</h3>
                 <p className="text-lg text-gray-300">
-                  We'll notify you when RealLife launches. Get ready to reclaim your time!
+                  We&apos;ll notify you when RealLife launches. Get ready to reclaim your time!
                 </p>
               </motion.div>
             )}
