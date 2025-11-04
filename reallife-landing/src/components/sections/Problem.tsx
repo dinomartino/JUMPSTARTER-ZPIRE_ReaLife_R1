@@ -6,28 +6,42 @@ import PhoneMockup from '@/components/shared/PhoneMockup';
 import { Users, Eye, Clock } from 'lucide-react';
 import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
+import { ColourfulText } from '@/components/ui/shadcn-io/colourful-text';
 
 export default function Problem() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
 
   return (
-    <section id="problem" className="min-h-screen py-24 relative" ref={ref}>
-      {/* Background glow effect */}
-      <div className="absolute inset-0 bg-gradient-radial from-purple-900/20 to-transparent" />
+    <section id="problem" className="min-h-screen py-24 relative bg-gradient-to-b from-white via-gray-50 to-white" ref={ref}>
+      {/* Subtle accent glow effects */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-200/30 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-pink-200/30 rounded-full blur-3xl" />
 
-      <div className="container mx-auto text-center px-8 relative z-10">
+      <div className="container mx-auto text-center px-4 md:px-8 relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-5xl md:text-6xl font-bold mb-16"
+          className="text-4xl md:text-5xl lg:text-6xl font-bold mb-12 md:mb-16 text-gray-900"
         >
           You&apos;re Not Weak.
           <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-pink-600">
-            You&apos;re Trapped.
-          </span>
+          <span>You're </span>
+          <ColourfulText
+            text="Trapped."
+            colors={[
+              'rgb(147, 51, 234)',  // purple-600
+              'rgb(219, 39, 119)',  // pink-600
+              'rgb(236, 72, 153)',  // pink-500
+              'rgb(249, 115, 22)',  // orange-500
+              'rgb(168, 85, 247)',  // purple-500
+              'rgb(236, 72, 153)',  // pink-500
+            ]}
+            interval={3000}
+            animationDuration={0.6}
+            staggerDelay={0.08}
+          />
         </motion.h2>
 
         {/* Stat Cards */}
@@ -94,7 +108,7 @@ export default function Problem() {
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
             viewport={{ once: true }}
-            className="text-gray-400 mt-8 text-lg max-w-lg mx-auto"
+            className="text-gray-600 mt-8 text-base md:text-lg max-w-lg mx-auto"
           >
             This digital drain leads to loss of ambition, declining focus,
             <br />

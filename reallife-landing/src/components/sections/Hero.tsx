@@ -158,10 +158,10 @@ export default function Hero() {
               : "0 0 80px rgba(168, 85, 247, 0.4), 0 0 40px rgba(236, 72, 153, 0.3)",
           }}
         >
-          <span className="text-white">Break Free</span>
+          <span className="text-white">Break Free from</span>
           <br />
           <span className="text-white">
-            from Endless{" "}
+            Endless{" "}
             {!isMobile ? (
               <TypingText
                 text={[
@@ -208,14 +208,14 @@ export default function Hero() {
         >
           <Button
             size={isMobile ? "default" : "lg"}
-            className="group relative border-2 border-black/50 hover:border-black/80 bg-white/5 text-base md:text-lg px-6 md:px-8 py-4 md:py-6 font-semibold shadow-xl hover:shadow-2xl rounded-full will-change-transform w-full sm:w-auto"
+            className="group relative border-2 border-black/50 hover:border-black/80 bg-white/5 md:text-lg px-6 md:px-8 py-4 md:py-6 font-semibold shadow-xl text-black hover:text-white rounded-full will-change-transform w-full sm:w-auto"
             onClick={() =>
               document
                 .getElementById("how-it-works")
                 ?.scrollIntoView({ behavior: "smooth" })
             }
           >
-            <span className="relative z-10 flex items-center justify-center gap-2">
+            <span className="relative z-10 flex items-center justify-center gap-2 ">
               See How It Works
               <span className="group-hover:translate-x-1 transition-transform duration-200 will-change-transform">
                 →
