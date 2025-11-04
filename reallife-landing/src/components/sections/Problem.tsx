@@ -30,12 +30,7 @@ export default function Problem() {
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-orange-200/50 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '5s' }} />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-red-100/30 rounded-full blur-3xl" />
 
-      {/* Warning icon decoration */}
-      <div className="absolute top-8 right-8 opacity-5">
-        <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-red-500">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-        </svg>
-      </div>
+    
 
       <div className="container mx-auto text-center px-4 md:px-8 relative z-10">
         <motion.h2
@@ -98,15 +93,35 @@ export default function Problem() {
             className="flex-1"
           >
             <PhoneMockup>
-              <div className="h-full bg-gradient-to-b from-gray-100 to-gray-200 p-4 overflow-hidden">
-                {/* Simulate endless scroll */}
+              <div className="h-full bg-gradient-to-b from-gray-100 to-gray-200 p-4 overflow-hidden relative">
+                {/* Simulate endless scroll - infinite downward */}
                 <motion.div
-                  animate={{ y: [0, isMobile ? -500 : -1000, 0] }}
-                  transition={{ duration: isMobile ? 10 : 15, repeat: Infinity, ease: 'linear' }}
+                  animate={{
+                    y: ['0%', isMobile ? '-50%' : '-66.666%']
+                  }}
+                  transition={{
+                    duration: isMobile ? 10 : 15,
+                    repeat: Infinity,
+                    ease: 'linear',
+                    repeatType: 'loop'
+                  }}
                   className="space-y-4 gpu-accelerated will-change-transform"
                 >
-                  {Array.from({ length: isMobile ? 5 : 10 }).map((_, i) => (
-                    <div key={i} className="bg-white rounded-lg p-4 shadow-sm">
+                  {/* Original posts */}
+                  {Array.from({ length: isMobile ? 3 : 4 }).map((_, i) => (
+                    <div key={`original-${i}`} className="bg-white rounded-lg p-4 shadow-sm">
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className="w-8 h-8 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full" />
+                        <div className="h-3 bg-gray-300 rounded w-24" />
+                      </div>
+                      <div className="h-48 bg-gradient-to-br from-blue-200 to-purple-200 rounded-lg mb-2" />
+                      <div className="h-2 bg-gray-300 rounded w-full mb-1" />
+                      <div className="h-2 bg-gray-300 rounded w-3/4" />
+                    </div>
+                  ))}
+                  {/* Duplicate posts for seamless loop */}
+                  {Array.from({ length: isMobile ? 3 : 4 }).map((_, i) => (
+                    <div key={`duplicate-${i}`} className="bg-white rounded-lg p-4 shadow-sm">
                       <div className="flex items-center gap-2 mb-2">
                         <div className="w-8 h-8 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full" />
                         <div className="h-3 bg-gray-300 rounded w-24" />

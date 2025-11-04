@@ -41,111 +41,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-purple-800 to-pink-900" />
       )}
 
-      {/* Split screen comparison - Mobile optimized */}
-      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 max-w-6xl mx-auto px-4 md:px-8">
-        {/* Left: Trapped - Dark and ominous */}
-        <motion.div
-          initial={{ opacity: 0, x: shouldReduceMotion ? 0 : -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: shouldReduceMotion ? 0.3 : 1, delay: shouldReduceMotion ? 0 : 0.5 }}
-          className="relative rounded-2xl md:rounded-3xl overflow-hidden h-[300px] md:h-[450px] shadow-2xl"
-        >
-          {/* Dark vignette effect */}
-          <div className="absolute inset-0 bg-gradient-to-br from-red-950/80 via-gray-900/90 to-black" />
-
-          {/* Animated warning glow - Disabled on mobile for performance */}
-          {!isMobile && !shouldReduceMotion && (
-            <motion.div
-              animate={{ opacity: [0.3, 0.6, 0.3] }}
-              transition={{ duration: 3, repeat: Infinity }}
-              className="absolute inset-0 bg-gradient-to-t from-red-600/20 via-transparent to-transparent"
-            />
-          )}
-
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center p-4 md:p-8 relative">
-              {/* Pulsing icon - Simpler animation on mobile */}
-              <motion.div
-                animate={!shouldReduceMotion ? { scale: [1, 1.1, 1] } : {}}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="text-4xl md:text-7xl mb-3 md:mb-6 filter drop-shadow-2xl drop-shadow-red-500"
-              >
-                📱
-              </motion.div>
-              <p className="text-xl md:text-3xl font-bold text-red-400 mb-2 md:mb-3">
-                Trapped in the scroll
-              </p>
-              <p className="text-gray-300 text-sm md:text-lg">
-                Hours wasted, goals forgotten
-              </p>
-
-              {/* Warning badge */}
-              <div className="mt-3 md:mt-6 inline-block px-3 md:px-4 py-1.5 md:py-2 bg-red-500/20 border border-red-500/50 rounded-full">
-                <span className="text-red-400 text-xs md:text-sm font-semibold">
-                  ⚠ Average: 4.5 hrs/day
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Corner accent - Smaller on mobile */}
-          <div className="absolute top-0 left-0 w-16 h-16 md:w-32 md:h-32 bg-red-500/20 blur-2xl md:blur-3xl" />
-        </motion.div>
-
-        {/* Right: Free - Bright and inspiring */}
-        <motion.div
-          initial={{ opacity: 0, x: shouldReduceMotion ? 0 : 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: shouldReduceMotion ? 0.3 : 1, delay: shouldReduceMotion ? 0 : 0.7 }}
-          className="relative rounded-2xl md:rounded-3xl overflow-hidden h-[300px] md:h-[450px] shadow-2xl"
-        >
-          {/* Bright gradient background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/60 via-green-900/70 to-teal-900/80" />
-
-          {/* Animated glow effect - Disabled on mobile for performance */}
-          {!isMobile && !shouldReduceMotion && (
-            <motion.div
-              animate={{ opacity: [0.4, 0.7, 0.4] }}
-              transition={{ duration: 3, repeat: Infinity }}
-              className="absolute inset-0 bg-gradient-to-t from-green-400/30 via-transparent to-transparent"
-            />
-          )}
-
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center p-4 md:p-8 relative">
-              {/* Animated icon - Simpler animation on mobile */}
-              <motion.div
-                animate={!shouldReduceMotion ? {
-                  scale: [1, 1.15, 1],
-                  rotate: [0, 5, -5, 0],
-                } : {}}
-                transition={{ duration: 2.5, repeat: Infinity }}
-                className="text-4xl md:text-7xl mb-3 md:mb-6 filter drop-shadow-2xl drop-shadow-green-500"
-              >
-                🎯
-              </motion.div>
-              <p className="text-xl md:text-3xl font-bold text-green-400 mb-2 md:mb-3">
-                Living your real life
-              </p>
-              <p className="text-gray-100 text-sm md:text-lg">
-                Goals achieved, potential unlocked
-              </p>
-
-              {/* Success badge */}
-              <div className="mt-3 md:mt-6 inline-block px-3 md:px-4 py-1.5 md:py-2 bg-green-400/20 border border-green-400/50 rounded-full">
-                <span className="text-green-400 text-xs md:text-sm font-semibold">
-                  ✓ Reclaim your time
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Corner accent - Smaller on mobile */}
-          <div className="absolute bottom-0 right-0 w-16 h-16 md:w-32 md:h-32 bg-green-400/20 blur-2xl md:blur-3xl" />
-        </motion.div>
-      </div>
-
-      {/* Center overlay with headline - Mobile optimized */}
+      {/* Center content with headline - Mobile optimized */}
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none px-4">
         <motion.h1
           initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 50 }}
@@ -176,7 +72,7 @@ export default function Hero() {
                 cursorCharacter=" "
                 typingSpeed={100}
                 initialDelay={2000}
-                pauseDuration={2000}
+                pauseDuration={1500}
                 deletingSpeed={50}
                 className="text-transparent bg-gradient-to-r from-white via-cyan-200 to-blue-200 bg-clip-text leading-relaxed inline-block pb-2"
               />
