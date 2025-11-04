@@ -208,7 +208,7 @@ export default function Hero() {
         >
           <Button
             size={isMobile ? "default" : "lg"}
-            className="group relative border-2 border-black/50 hover:border-black/80 bg-white/5 md:text-lg px-6 md:px-8 py-4 md:py-6 font-semibold shadow-xl text-black hover:text-white rounded-full will-change-transform w-full sm:w-auto"
+            className="group relative border-2 border-black/50 hover:border-black/80 bg-white/5 md:text-lg px-6 md:px-8 py-4 md:py-6 font-semibold shadow-xl text-black hover:text-white rounded-full gpu-accelerated will-change-transform w-full sm:w-auto"
             onClick={() =>
               document
                 .getElementById("how-it-works")
@@ -225,7 +225,7 @@ export default function Hero() {
           <Button
             size={isMobile ? "default" : "lg"}
             variant="outline"
-            className="group relative border-2 border-white/50 hover:border-white/80 bg-white/5 hover:bg-white/10 backdrop-blur-xl text-white text-base md:text-lg px-6 md:px-8 py-4 md:py-6 font-semibold shadow-xl hover:shadow-2xl rounded-full will-change-transform w-full sm:w-auto"
+            className="group relative border-2 border-white/50 hover:border-white/80 bg-white/5 hover:bg-white/10 backdrop-blur-xl text-white text-base md:text-lg px-6 md:px-8 py-4 md:py-6 font-semibold shadow-xl hover:shadow-2xl rounded-full gpu-accelerated will-change-transform w-full sm:w-auto"
             onClick={() =>
               document
                 .getElementById("waitlist")

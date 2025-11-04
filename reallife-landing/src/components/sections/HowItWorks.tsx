@@ -59,14 +59,28 @@ const steps = [
 
 export default function HowItWorks() {
   const [activeStep, setActiveStep] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  useEffect(() => {
+    // Disable auto-advance on mobile for better performance
+    if (isMobile) return;
+
     const interval = setInterval(() => {
       setActiveStep((prev) => (prev + 1) % steps.length);
     }, 5000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [isMobile]);
 
   const handlePrevStep = () => {
     setActiveStep((prev) => (prev - 1 + steps.length) % steps.length);
@@ -153,19 +167,16 @@ export default function HowItWorks() {
                   {activeStep === 0 && (
                     <div className="h-full bg-black overflow-hidden relative">
                       <motion.div
-                        animate={{ y: [0, -2000, 0] }}
-                        transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
-                        className="space-y-2 p-2"
+                        animate={{ y: [0, isMobile ? -1000 : -2000, 0] }}
+                        transition={{ duration: isMobile ? 8 : 10, repeat: Infinity, ease: 'linear' }}
+                        className="space-y-2 p-2 gpu-accelerated will-change-transform"
                       >
-                        {Array.from({ length: 20 }).map((_, i) => (
+                        {Array.from({ length: isMobile ? 10 : 20 }).map((_, i) => (
                           <div key={i} className="bg-gradient-to-br from-purple-600 to-pink-600 rounded-lg h-96 flex items-center justify-center text-white font-bold">
                             Video {i + 1}
                           </div>
                         ))}
                       </motion.div>
-                      <div className="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full font-mono text-sm">
-                        <CountUp end={15} duration={2} /> min
-                      </div>
                     </div>
                   )}
 

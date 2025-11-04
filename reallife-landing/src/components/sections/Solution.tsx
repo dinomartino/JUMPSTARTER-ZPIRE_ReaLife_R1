@@ -3,13 +3,25 @@
 import { motion } from 'framer-motion';
 import FeatureCard from '@/components/shared/FeatureCard';
 import PhoneMockup from '@/components/shared/PhoneMockup';
-import { BarChart3, Bell, Sparkles, Trophy, Brain, Heart, Smile } from 'lucide-react';
+import { BarChart3, Bell, Sparkles, Trophy, Brain, Heart, Smile, ChevronDown } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 
 export default function Solution() {
   return (
-    <section id="solution" className="min-h-screen py-24 relative">
-      <div className="container mx-auto px-8">
+    <section id="solution" className="min-h-screen py-24 relative bg-gradient-to-b from-emerald-50/30 via-green-50/20 to-emerald-50/30 overflow-hidden">
+      {/* Positive themed accent glow effects */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-emerald-200/50 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-green-200/50 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '5s' }} />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-100/30 rounded-full blur-3xl" />
+
+      {/* Success icon decoration */}
+      <div className="absolute top-8 left-8 opacity-5">
+        <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-emerald-500">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </div>
+
+      <div className="container mx-auto px-8 relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -173,6 +185,24 @@ export default function Solution() {
           </motion.div>
         </div>
       </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, y: [0, 10, 0] }}
+        transition={{
+          opacity: { delay: 2, duration: 0.5 },
+          y: { repeat: Infinity, duration: 2, ease: "easeInOut" },
+        }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer"
+        onClick={() =>
+          document
+            .getElementById("how-it-works")
+            ?.scrollIntoView({ behavior: "smooth" })
+        }
+      >
+        <ChevronDown className="w-8 h-8 text-emerald-400" />
+      </motion.div>
     </section>
   );
 }

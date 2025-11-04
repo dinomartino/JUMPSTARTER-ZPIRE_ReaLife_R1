@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode } from 'react';
+import { ReactNode, memo } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
@@ -13,7 +13,7 @@ interface FeatureCardProps {
   gradient: string;
 }
 
-export default function FeatureCard({
+const FeatureCard = memo(function FeatureCard({
   position,
   number,
   title,
@@ -55,4 +55,6 @@ export default function FeatureCard({
       <p className="text-gray-400 leading-relaxed">{description}</p>
     </motion.div>
   );
-}
+});
+
+export default FeatureCard;

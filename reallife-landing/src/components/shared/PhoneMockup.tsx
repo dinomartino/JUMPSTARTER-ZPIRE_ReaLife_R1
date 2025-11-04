@@ -1,7 +1,8 @@
 'use client';
 
-import { ReactNode } from 'react';
+import { ReactNode, memo } from 'react';
 import { motion } from 'framer-motion';
+import { Iphone } from '@/components/ui/iphone';
 
 interface PhoneMockupProps {
   children?: ReactNode;
@@ -9,34 +10,31 @@ interface PhoneMockupProps {
   className?: string;
 }
 
-export default function PhoneMockup({ children, size = 'medium', className = '' }: PhoneMockupProps) {
+const PhoneMockup = memo(function PhoneMockup({ children, size = 'medium', className = '' }: PhoneMockupProps) {
   const sizeClasses = {
-    small: 'w-[240px] h-[480px]',
-    medium: 'w-[320px] h-[680px]',
-    large: 'w-[380px] h-[800px]'
+    small: 'h-[400px]',
+    medium: 'h-[600px]',
+    large: 'h-[700px]'
   };
 
   return (
     <motion.div
-      className={`relative ${sizeClasses[size]} ${className}`}
+      className={`relative ${className}`}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
     >
-      {/* Phone frame */}
-      <div className="absolute inset-0 rounded-[50px] border-8 border-gray-800 bg-black shadow-2xl overflow-hidden">
-        {/* Notch */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-6 bg-black rounded-b-3xl z-20" />
-
-        {/* Screen content */}
-        <div className="absolute inset-4 rounded-[42px] overflow-hidden bg-white">
+      <div className="relative inline-block">
+        <Iphone className={`${sizeClasses[size]} w-auto`}>
           {children}
-        </div>
+        </Iphone>
       </div>
 
       {/* Glow effect */}
-      <div className="absolute inset-0 rounded-[50px] bg-gradient-to-br from-purple-deep/30 to-pink-bright/30 blur-3xl -z-10" />
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-pink-500/20 blur-3xl -z-10 scale-90" />
     </motion.div>
   );
-}
+});
+
+export default PhoneMockup;
