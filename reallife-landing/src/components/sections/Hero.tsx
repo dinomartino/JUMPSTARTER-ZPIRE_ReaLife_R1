@@ -197,8 +197,7 @@ export default function Hero() {
             textShadow: "0 2px 20px rgba(0, 0, 0, 0.8)",
           }}
         >
-          RealLife helps you reclaim your time, focus, and ambition—one
-          notification at a time.
+          <span className="text-transparent bg-gradient-to-r from-white via-cyan-200 to-blue-200 bg-clip-text">Scrolless</span> helps you reclaim your time, focus, and ambition.
         </motion.p>
 
         <motion.div
