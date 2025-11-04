@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { motion } from 'motion/react';
 
-type ColourfulTextProps = Omit<React.ComponentProps<'span'>, 'children'> & {
+type ColourfulTextProps = Omit<React.ComponentProps<'span'>, 'children' | 'ref'> & {
   text: string;
   interval?: number;
   colors?: string[];
@@ -24,17 +24,14 @@ const defaultColors = [
   'rgb(249, 129, 47)',
 ];
 
-function ColourfulText({
-  ref,
+const ColourfulText = React.forwardRef<HTMLSpanElement, ColourfulTextProps>(({
   text,
   interval = 5000,
   colors = defaultColors,
   animationDuration = 0.5,
   staggerDelay = 0.05,
   ...props
-}: ColourfulTextProps) {
-  const localRef = React.useRef<HTMLSpanElement>(null);
-  React.useImperativeHandle(ref, () => localRef.current as HTMLSpanElement);
+}, ref) => {
 
   const [currentColors, setCurrentColors] = React.useState(colors);
   const [count, setCount] = React.useState(0);
@@ -52,7 +49,7 @@ function ColourfulText({
   const characters = React.useMemo(() => text.split(''), [text]);
 
   return (
-    <span ref={localRef} data-slot="colourful-text" {...props}>
+    <span ref={ref} data-slot="colourful-text" {...props}>
       {characters.map((char, index) => (
         <motion.span
           key={`${char}-${count}-${index}`}
@@ -75,6 +72,8 @@ function ColourfulText({
       ))}
     </span>
   );
-}
+});
+
+ColourfulText.displayName = 'ColourfulText';
 
 export { ColourfulText, type ColourfulTextProps };
