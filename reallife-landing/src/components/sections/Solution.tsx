@@ -14,27 +14,21 @@ export default function Solution() {
       {/* Purple/Pink gradient background like Hero */}
       <div className="absolute inset-0 bg-dark" />
 
-      {/* Sparkles filling entire section */}
+      {/* Sparkles filling entire section - Reduced density for performance */}
       <div className="absolute inset-0 w-full h-full">
         <SparklesCore
           id="solution-sparkles"
           background="transparent"
-          minSize={0.4}
-          maxSize={1}
-          particleDensity={100}
+          minSize={0.6}
+          maxSize={1.2}
+          particleDensity={30}
           className="w-full h-full"
           particleColor="#FFFFFF"
         />
       </div>
 
       {/* Main heading */}
-      <motion.h1
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="text-4xl md:text-6xl lg:text-7xl font-bold text-center text-white relative z-20 mb-8 pt-12"
-      >
+      <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-center text-white relative z-20 mb-8 pt-12">
         Meet <ColourfulText
           text="Scrolless"
           interval={3000}
@@ -48,7 +42,7 @@ export default function Solution() {
 
           ]}
         />
-      </motion.h1>
+      </h1>
 
       {/* Gradients centered under heading */}
       <div className="relative z-20 w-full mb-16">
@@ -62,15 +56,9 @@ export default function Solution() {
       </div>
 
       {/* Description */}
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        viewport={{ once: true }}
-        className="text-xl md:text-2xl text-gray-200 text-center mb-24 max-w-3xl mx-auto relative z-20 px-8"
-      >
+      <p className="text-xl md:text-2xl text-gray-200 text-center mb-24 max-w-3xl mx-auto relative z-20 px-8">
         Your AI-powered digital wellness coach that identifies, notifies, and helps you modify habits for a healthier digital life.
-      </motion.p>
+      </p>
 
       <div className="container mx-auto px-8 relative z-10">
 
@@ -177,13 +165,7 @@ export default function Solution() {
 
         {/* Key differentiators */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="relative group"
-          >
+          <div className="relative group">
             <Card className="relative p-8 text-center bg-white/90 backdrop-blur-xl border-2 border-gray-200 shadow-xl hover:shadow-2xl hover:border-gray-300 hover:-translate-y-1 transition-all duration-300 overflow-hidden">
               {/* Gradient background overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500 to-pink-500 opacity-5" />
@@ -199,15 +181,9 @@ export default function Solution() {
               {/* Shine effect */}
               <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
             </Card>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
-            className="relative group"
-          >
+          <div className="relative group">
             <Card className="relative p-8 text-center bg-white/90 backdrop-blur-xl border-2 border-gray-200 shadow-xl hover:shadow-2xl hover:border-gray-300 hover:-translate-y-1 transition-all duration-300 overflow-hidden">
               {/* Gradient background overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-pink-500 to-red-500 opacity-5" />
@@ -223,15 +199,9 @@ export default function Solution() {
               {/* Shine effect */}
               <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
             </Card>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="relative group"
-          >
+          <div className="relative group">
             <Card className="relative p-8 text-center bg-white/90 backdrop-blur-xl border-2 border-gray-200 shadow-xl hover:shadow-2xl hover:border-gray-300 hover:-translate-y-1 transition-all duration-300 overflow-hidden">
               {/* Gradient background overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 to-blue-500 opacity-5" />
@@ -247,7 +217,7 @@ export default function Solution() {
               {/* Shine effect */}
               <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
             </Card>
-          </motion.div>
+          </div>
         </div>
       </div>
 

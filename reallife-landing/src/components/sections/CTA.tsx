@@ -1,11 +1,10 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import confetti from 'canvas-confetti';
-import { AuroraBackground } from '@/components/ui/shadcn-io/aurora-background';
 import PhoneMockup from '@/components/shared/PhoneMockup';
 
 export default function CTA() {
@@ -34,18 +33,17 @@ export default function CTA() {
 
   return (
     <section id="waitlist" className="relative min-h-screen overflow-hidden">
-      <AuroraBackground >
-        <div className="relative z-10 w-full py-20 px-8 md:px-12 lg:px-16">
+      {/* Lightweight gradient background instead of heavy Aurora canvas */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
+        {/* Subtle animated gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-purple-100/50 via-transparent to-blue-100/50 animate-pulse-slow" />
+      </div>
+
+      <div className="relative z-10 w-full py-20 px-8 md:px-12 lg:px-16">
           <div className="container mx-auto max-w-7xl">
             <div className="grid lg:grid-cols-2 gap-8 items-center">
               {/* Left side - Content */}
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                className="text-left space-y-8"
-              >
+              <div className="text-left space-y-8">
                 <div className="space-y-6">
                   <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-100 border border-purple-300 backdrop-blur-sm">
                     <span className="relative flex h-2 w-2">
@@ -148,16 +146,10 @@ export default function CTA() {
                     <span className="font-medium">AI-powered insights</span>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Right side - Phone Mockup */}
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                viewport={{ once: true }}
-                className="flex justify-center lg:justify-end"
-              >
+              <div className="flex justify-center lg:justify-end">
                 <PhoneMockup size="large" className="transform hover:scale-105 transition-transform duration-300">
                   {/*
                     TODO: Add your app screenshot here
@@ -190,11 +182,10 @@ export default function CTA() {
                     </div>
                   </div>
                 </PhoneMockup>
-              </motion.div>
+              </div>
             </div>
           </div>
-        </div>
-      </AuroraBackground>
+      </div>
     </section>
   );
 }

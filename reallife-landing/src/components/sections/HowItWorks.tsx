@@ -72,14 +72,8 @@ export default function HowItWorks() {
   }, []);
 
   useEffect(() => {
-    // Disable auto-advance on mobile for better performance
-    if (isMobile) return;
-
-    const interval = setInterval(() => {
-      setActiveStep((prev) => (prev + 1) % steps.length);
-    }, 5000);
-
-    return () => clearInterval(interval);
+    // Disable auto-advance for better performance - user can manually navigate
+    return;
   }, [isMobile]);
 
   const handlePrevStep = () => {
@@ -99,25 +93,13 @@ export default function HowItWorks() {
       <div className="absolute inset-0 bg-grid-pattern opacity-5" />
 
       <div className="container mx-auto px-8 relative z-10">
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-5xl md:text-6xl font-bold text-center mb-8"
-        >
+        <h2 className="text-5xl md:text-6xl font-bold text-center mb-8">
           From Scrolling to Succeeding
-        </motion.h2>
+        </h2>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="text-xl md:text-2xl text-gray-400 text-center mb-24"
-        >
+        <p className="text-xl md:text-2xl text-gray-400 text-center mb-24">
           Watch how ReaLife transforms your digital habits in real-time
-        </motion.p>
+        </p>
 
         {/* Step navigator */}
         <div className="flex justify-center items-center gap-2 md:gap-4 mb-16 overflow-x-auto pb-4">
@@ -168,8 +150,9 @@ export default function HowItWorks() {
                     <div className="h-full bg-black overflow-hidden relative">
                       <motion.div
                         animate={{ y: [0, isMobile ? -1000 : -2000, 0] }}
-                        transition={{ duration: isMobile ? 8 : 10, repeat: Infinity, ease: 'linear' }}
-                        className="space-y-2 p-2 gpu-accelerated will-change-transform"
+                        transition={{ duration: isMobile ? 12 : 15, repeat: Infinity, ease: 'linear' }}
+                        className="space-y-2 p-2"
+                        style={{ transform: 'translateZ(0)' }}
                       >
                         {Array.from({ length: isMobile ? 10 : 20 }).map((_, i) => (
                           <div key={i} className="bg-gradient-to-br from-purple-600 to-pink-600 rounded-lg h-96 flex items-center justify-center text-white font-bold">
@@ -321,16 +304,13 @@ export default function HowItWorks() {
                 </p>
                 <ul className="space-y-3">
                   {currentStep.details.map((detail, i) => (
-                    <motion.li
+                    <li
                       key={i}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.1 }}
                       className="flex items-start gap-3"
                     >
                       <Check className="w-6 h-6 text-green-400 flex-shrink-0 mt-1" />
                       <span className="text-gray-400">{detail}</span>
-                    </motion.li>
+                    </li>
                   ))}
                 </ul>
               </div>

@@ -1,7 +1,6 @@
 'use client';
 
 import { Instagram, Linkedin, Github, Mail, ArrowUp } from 'lucide-react';
-import { motion } from 'framer-motion';
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -16,12 +15,6 @@ export default function Footer() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             {/* Brand Section - Takes more space */}
             <div className="lg:col-span-5">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-              >
                 <div className="text-4xl font-bold gradient-text mb-4">
                   ReaLife
                 </div>
@@ -78,18 +71,12 @@ export default function Footer() {
                     </a>
                   </div>
                 </div>
-              </motion.div>
             </div>
 
             {/* Links Section - Organized in 3 columns */}
             <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-8">
               {/* Product */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                viewport={{ once: true }}
-              >
+              <div>
                 <h4 className="font-bold text-white mb-4">Product</h4>
                 <ul className="space-y-3 text-gray-400">
                   <li>
@@ -114,15 +101,10 @@ export default function Footer() {
                     </a>
                   </li>
                 </ul>
-              </motion.div>
+              </div>
 
               {/* Company */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true }}
-              >
+              <div>
                 <h4 className="font-bold text-white mb-4">Company</h4>
                 <ul className="space-y-3 text-gray-400">
                   <li>
@@ -146,15 +128,10 @@ export default function Footer() {
                     </a>
                   </li>
                 </ul>
-              </motion.div>
+              </div>
 
               {/* Legal */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                viewport={{ once: true }}
-              >
+              <div>
                 <h4 className="font-bold text-white mb-4">Legal</h4>
                 <ul className="space-y-3 text-gray-400">
                   <li>
@@ -173,7 +150,7 @@ export default function Footer() {
                     </a>
                   </li>
                 </ul>
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>

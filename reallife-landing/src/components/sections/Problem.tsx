@@ -25,21 +25,15 @@ export default function Problem() {
 
   return (
     <section id="problem" className="min-h-screen py-24 md:py-32 relative bg-gradient-to-b from-red-50/30 via-orange-50/20 to-red-50/30 overflow-hidden" ref={ref}>
-      {/* Warning themed accent glow effects */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-red-200/50 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-orange-200/50 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '5s' }} />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-red-100/30 rounded-full blur-3xl" />
+      {/* Warning themed accent glow effects - Static for performance */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-red-200/30 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-orange-200/30 rounded-full blur-3xl" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-red-100/20 rounded-full blur-3xl" />
 
     
 
       <div className="container mx-auto text-center px-4 md:px-8 relative z-10">
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-4xl md:text-5xl lg:text-6xl font-bold mb-12 md:mb-16 text-gray-900"
-        >
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-12 md:mb-16 text-gray-900">
           You're Not Weak.
           <br />
 
@@ -55,7 +49,7 @@ export default function Problem() {
             You're Trapped.
             </FuzzyText>
           </span>
-        </motion.h2>
+        </h2>
 
         {/* Stat Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 max-w-6xl mx-auto mb-20">
@@ -86,13 +80,7 @@ export default function Problem() {
         {/* Animated phone mockups */}
         <div className="flex flex-col md:flex-row gap-8 md:gap-12 justify-center items-center max-w-4xl mx-auto">
           {/* Scrolling mockup */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            viewport={{ once: true }}
-            className="flex-1"
-          >
+          <div className="flex-1">
             <PhoneMockup>
               <div className="h-full bg-gradient-to-b from-gray-100 to-gray-200 p-4 overflow-hidden relative">
                 {/* Simulate endless scroll - infinite downward */}
@@ -101,12 +89,13 @@ export default function Problem() {
                     y: ['0%', isMobile ? '-50%' : '-66.666%']
                   }}
                   transition={{
-                    duration: isMobile ? 10 : 15,
+                    duration: isMobile ? 15 : 20,
                     repeat: Infinity,
                     ease: 'linear',
                     repeatType: 'loop'
                   }}
-                  className="space-y-4 gpu-accelerated will-change-transform"
+                  className="space-y-4"
+                  style={{ transform: 'translateZ(0)' }}
                 >
                   {/* Original posts */}
                   {Array.from({ length: isMobile ? 3 : 4 }).map((_, i) => (
@@ -138,28 +127,23 @@ export default function Problem() {
             <p className="text-gray-600 mt-4 text-sm md:text-base text-center font-medium">
               Endless Scrolling
             </p>
-          </motion.div>
+          </div>
 
           {/* Swiping mockup */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            viewport={{ once: true }}
-            className="flex-1"
-          >
+          <div className="flex-1">
             <PhoneMockup>
               <div className="h-full bg-black overflow-hidden relative">
                 {/* Simulate swipe-through stories/reels */}
                 <motion.div
                   animate={{ x: ['0%', '-100%', '-200%', '-300%'] }}
                   transition={{
-                    duration: isMobile ? 12 : 16,
+                    duration: isMobile ? 16 : 20,
                     repeat: Infinity,
                     ease: 'linear',
                     repeatType: 'loop'
                   }}
-                  className="absolute inset-0 flex gpu-accelerated will-change-transform"
+                  className="absolute inset-0 flex"
+                  style={{ transform: 'translateZ(0)' }}
                 >
                   {/* Story/Reel cards - duplicated for seamless loop */}
                   {[
@@ -219,20 +203,14 @@ export default function Problem() {
             <p className="text-gray-600 mt-4 text-sm md:text-base text-center font-medium">
               Compulsive Swiping
             </p>
-          </motion.div>
+          </div>
         </div>
 
         {/* Description text */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
-          viewport={{ once: true }}
-          className="text-gray-600 mt-12 text-base md:text-lg max-w-2xl mx-auto text-center"
-        >
+        <p className="text-gray-600 mt-12 text-base md:text-lg max-w-2xl mx-auto text-center">
           This digital drain leads to loss of ambition, declining focus,
           and fuels anxiety and low self-worth.
-        </motion.p>
+        </p>
       </div>
 
       {/* Scroll indicator */}

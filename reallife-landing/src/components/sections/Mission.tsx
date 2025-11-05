@@ -1,8 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { WavyBackground } from '@/components/ui/shadcn-io/wavy-background';
 import { GradientText } from '@/components/ui/shadcn-io/gradient-text';
+import { WavyBackground } from '@/components/ui/shadcn-io/wavy-background';
 
 export default function Mission() {
 
@@ -22,36 +21,18 @@ export default function Mission() {
       </WavyBackground>
 
       {/* Content */}
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: 'easeOut' }}
-        viewport={{ once: true, amount: 0.3 }}
-        className="relative z-20 max-w-6xl mx-auto text-center px-6"
-      >
+      <div className="relative z-20 max-w-6xl mx-auto text-center px-6">
         {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 backdrop-blur-sm mb-6"
-        >
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 backdrop-blur-sm mb-6">
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
           </span>
           <span className="text-sm font-medium text-purple-300">Our Mission</span>
-        </motion.div>
+        </div>
 
         {/* Main Heading */}
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-[1.1] tracking-tight"
-        >
+        <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-[1.1] tracking-tight">
           <span className="text-white">This Isn&apos;t Just an App.</span>
           <br />
           <GradientText
@@ -61,16 +42,10 @@ export default function Mission() {
             transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
             className="text-5xl md:text-7xl lg:text-8xl font-bold"
           />
-        </motion.h2>
+        </h2>
 
         {/* Description */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="max-w-4xl mx-auto space-y-4 text-xl md:text-2xl text-gray-300 leading-relaxed mb-12"
-        >
+        <div className="max-w-4xl mx-auto space-y-4 text-xl md:text-2xl text-gray-300 leading-relaxed mb-12">
           <p className="font-medium">
             Traditional screen-time apps{' '}
             <span className="text-red-400 font-bold">shame you</span>. We{' '}
@@ -82,16 +57,10 @@ export default function Mission() {
           <p className="text-2xl md:text-3xl font-bold text-white mt-6">
             Together, we&apos;re building a future where technology serves life, not replaces it.
           </p>
-        </motion.div>
+        </div>
 
         {/* Vision Cards */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {[
             {
               title: 'Reclaim Your Time',
@@ -108,15 +77,10 @@ export default function Mission() {
               description: 'Join a community reclaiming their potential',
               color: 'from-orange-500 to-purple-500'
             }
-          ].map((card, index) => (
-            <motion.div
+          ].map((card) => (
+            <div
               key={card.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.7 + index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05, y: -5 }}
-              className="group relative p-8 rounded-3xl bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300 overflow-hidden"
+              className="group relative p-8 rounded-3xl bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-xl border border-white/10 hover:border-white/20 hover:scale-105 hover:-translate-y-1 transition-all duration-300 overflow-hidden"
             >
               {/* Hover glow effect */}
               <div className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300 bg-gradient-to-br ${card.color} blur-2xl`} />
@@ -132,10 +96,10 @@ export default function Mission() {
 
               {/* Corner accent */}
               <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-br ${card.color} opacity-10 blur-2xl rounded-full`} />
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </section>
   );
 }
