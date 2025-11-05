@@ -64,12 +64,14 @@ export default function Problem() {
             label="people worldwide addicted to social media"
             icon={<Users className="w-12 h-12" />}
             gradient="from-purple-500 to-pink-500"
+            subtitle="28x the population of Hong Kong"
           />
           <StatCard
             number="200B"
             label="daily views on YouTube Shorts alone"
             icon={<Eye className="w-12 h-12" />}
             gradient="from-pink-500 to-orange-500"
+            subtitle="That's 27 videos for every person on Earth"
           />
           <StatCard
             number={inView ? <CountUp end={4.5} decimals={1} duration={2} preserveValue={true} redraw={false} /> : 0}
@@ -77,6 +79,7 @@ export default function Problem() {
             icon={<Clock className="w-12 h-12" />}
             gradient="from-orange-500 to-red-500"
             suffix=" hrs"
+            subtitle="1,642 hours wasted annually"
           />
         </div>
 

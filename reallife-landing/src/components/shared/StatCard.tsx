@@ -10,9 +10,10 @@ interface StatCardProps {
   icon: ReactNode;
   gradient: string;
   suffix?: string;
+  subtitle?: string;
 }
 
-const StatCard = memo(function StatCard({ number, label, icon, gradient, suffix = '' }: StatCardProps) {
+const StatCard = memo(function StatCard({ number, label, icon, gradient, suffix = '', subtitle }: StatCardProps) {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.3 });
 
   return (
@@ -71,6 +72,18 @@ const StatCard = memo(function StatCard({ number, label, icon, gradient, suffix 
           >
             {label}
           </motion.p>
+
+          {/* Subtitle/Context */}
+          {subtitle && (
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="text-sm md:text-base text-gray-500 mt-3 font-normal italic"
+            >
+              {subtitle}
+            </motion.p>
+          )}
         </div>
 
         {/* Shine effect on hover */}
