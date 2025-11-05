@@ -77,11 +77,18 @@ export default function Navigation() {
             >
               Our Solution
             </a>
+          
             <a
               href="#how-it-works"
               className="text-gray-300 hover:text-white transition-colors"
             >
               How It Works
+            </a>
+              <a
+              href="#mission"
+              className="text-gray-300 hover:text-white transition-colors"
+            >
+              Our Mission
             </a>
           </div>
 
@@ -140,6 +147,13 @@ export default function Navigation() {
                 className="text-2xl text-gray-300 hover:text-white transition-colors"
               >
                 Our Solution
+              </a>
+              <a
+                href="#mission"
+                onClick={() => handleNavClick('mission')}
+                className="text-2xl text-gray-300 hover:text-white transition-colors"
+              >
+                Our Mission
               </a>
               <a
                 href="#how-it-works"

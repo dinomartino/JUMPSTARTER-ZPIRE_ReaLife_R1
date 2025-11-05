@@ -11,7 +11,7 @@ const steps = [
     id: 1,
     label: 'Detect',
     title: "You're scrolling on TikTok",
-    description: "RealLife monitors your screen time in real-time, detecting when you've been on distracting apps like TikTok or Instagram.",
+    description: "ReaLife monitors your screen time in real-time, detecting when you've been on distracting apps like TikTok or Instagram.",
     details: [
       'Non-invasive background tracking',
       'Respects your privacy - data stays on device',
@@ -116,7 +116,7 @@ export default function HowItWorks() {
           viewport={{ once: true }}
           className="text-xl md:text-2xl text-gray-400 text-center mb-24"
         >
-          Watch how RealLife transforms your digital habits in real-time
+          Watch how ReaLife transforms your digital habits in real-time
         </motion.p>
 
         {/* Step navigator */}
@@ -200,7 +200,7 @@ export default function HowItWorks() {
                             RL
                           </div>
                           <div className="flex-1">
-                            <div className="font-bold text-gray-800 mb-1">RealLife</div>
+                            <div className="font-bold text-gray-800 mb-1">ReaLife</div>
                             <div className="text-sm text-gray-600">
                               You&apos;ve been scrolling for 15 minutes. Ready to work on your goal?
                             </div>

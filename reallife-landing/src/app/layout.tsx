@@ -9,8 +9,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "RealLife - Break Free from Endless Scrolling",
-  description: "RealLife helps you reclaim your time, focus, and ambition—one notification at a time. Transform your digital habits with AI-powered coaching.",
+  title: "ReaLife - Break Free from Endless Scrolling",
+  description: "ReaLife helps you reclaim your time, focus, and ambition—one notification at a time. Transform your digital habits with AI-powered coaching.",
   keywords: ["digital wellness", "productivity", "social media addiction", "screen time", "focus"],
 };
 
