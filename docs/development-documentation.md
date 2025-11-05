@@ -643,10 +643,179 @@ const stats = [
 ```
 
 **Phone Screen Content**:
-Shows "My Goals" interface with:
+Currently shows static HTML mockup of "My Goals" interface with:
 - 3 goal items with progress bars
 - Token counter
 - Time saved stats
+
+**Planned: Real Prototype Video Integration**
+
+To replace the static mockup with an actual prototype video, follow these steps:
+
+**1. Video Preparation:**
+```bash
+# Recommended specifications:
+- Format: MP4 (H.264 codec) + WebM (VP9) for browser compatibility
+- Resolution: 1080x2340 (vertical phone aspect ratio) or your prototype's native resolution
+- File size: <50MB (ideally 10-20MB after optimization)
+- Duration: 10-30 seconds looping demo
+- Frame rate: 30fps
+```
+
+**2. Video Optimization (Optional but Recommended):**
+```bash
+# Using ffmpeg to optimize video:
+
+# For MP4 (H.264 - best compatibility):
+ffmpeg -i prototype-original.mov -vcodec h264 -crf 23 -preset slow -vf "scale=1080:2340" -an prototype-demo.mp4
+
+# For WebM (VP9 - smaller file size):
+ffmpeg -i prototype-original.mov -c:v libvpx-vp9 -crf 30 -b:v 0 -vf "scale=1080:2340" -an prototype-demo.webm
+
+# Flags explained:
+# -crf 23: Constant Rate Factor (lower = better quality, 18-28 recommended)
+# -preset slow: Better compression (slow/medium/fast)
+# -vf "scale=1080:2340": Resize to phone dimensions
+# -an: Remove audio (not needed for silent demos)
+```
+
+**3. File Placement:**
+```bash
+# Place optimized video in public folder:
+/public/videos/prototype-demo.mp4
+/public/videos/prototype-demo.webm  # Optional fallback
+```
+
+**4. Code Integration:**
+
+Replace the current static phone mockup content (lines 82-134 in `Solution.tsx`) with:
+
+```tsx
+<PhoneMockup size="large">
+  <div className="h-full w-full overflow-hidden bg-black relative">
+    <video
+      autoPlay
+      loop
+      muted
+      playsInline
+      className="h-full w-full object-cover"
+      poster="/videos/prototype-thumbnail.jpg"  // Optional: first frame preview
+    >
+      <source src="/videos/prototype-demo.webm" type="video/webm" />
+      <source src="/videos/prototype-demo.mp4" type="video/mp4" />
+      {/* Fallback for browsers that don't support video */}
+      <div className="h-full bg-gradient-to-br from-purple-50 to-pink-50 flex items-center justify-center p-6">
+        <p className="text-gray-600 text-center">
+          Video not supported in your browser. Please use a modern browser.
+        </p>
+      </div>
+    </video>
+  </div>
+</PhoneMockup>
+```
+
+**5. Performance Optimization:**
+
+Add lazy loading for better initial page load:
+
+```tsx
+'use client';
+import { useState, useRef, useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
+
+export default function Solution() {
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
+
+  useEffect(() => {
+    if (inView) {
+      setShouldLoadVideo(true);
+    }
+  }, [inView]);
+
+  return (
+    <div ref={ref}>
+      <PhoneMockup size="large">
+        {shouldLoadVideo ? (
+          <video autoPlay loop muted playsInline className="h-full w-full object-cover">
+            <source src="/videos/prototype-demo.webm" type="video/webm" />
+            <source src="/videos/prototype-demo.mp4" type="video/mp4" />
+          </video>
+        ) : (
+          <div className="h-full bg-gray-200 animate-pulse" />
+        )}
+      </PhoneMockup>
+    </div>
+  );
+}
+```
+
+**6. Additional Video Options:**
+
+```tsx
+// Auto-pause when not in viewport (save resources):
+const videoRef = useRef<HTMLVideoElement>(null);
+
+useEffect(() => {
+  if (videoRef.current) {
+    if (inView) {
+      videoRef.current.play();
+    } else {
+      videoRef.current.pause();
+    }
+  }
+}, [inView]);
+
+<video ref={videoRef} loop muted playsInline>
+  <source src="/videos/prototype-demo.mp4" type="video/mp4" />
+</video>
+```
+
+**7. Deployment Checklist:**
+
+- [ ] Video file is <50MB (Vercel file size limit)
+- [ ] Video is in `/public/videos/` directory
+- [ ] Video has `autoPlay`, `loop`, `muted`, and `playsInline` attributes
+- [ ] Multiple formats provided (MP4 + WebM) for compatibility
+- [ ] Fallback content provided for unsupported browsers
+- [ ] Video loads lazily (only when section is in view)
+- [ ] Test on mobile devices (iOS Safari, Android Chrome)
+- [ ] Verify video loops seamlessly
+
+**8. Alternative: If Video File is Too Large**
+
+Consider using external hosting:
+
+```tsx
+// Option A: Vimeo embed (professional, no branding on paid plans)
+<iframe
+  src="https://player.vimeo.com/video/YOUR_VIDEO_ID?autoplay=1&loop=1&muted=1&background=1"
+  className="h-full w-full"
+  allow="autoplay; fullscreen"
+/>
+
+// Option B: YouTube embed (free, shows branding)
+<iframe
+  src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1&loop=1&muted=1&controls=0&showinfo=0&playlist=YOUR_VIDEO_ID"
+  className="h-full w-full"
+  allow="autoplay"
+/>
+
+// Option C: Cloudinary (automatic optimization)
+// 1. Upload to Cloudinary
+// 2. Use video transformation URL
+<video autoPlay loop muted playsInline>
+  <source src="https://res.cloudinary.com/YOUR_CLOUD/video/upload/q_auto/prototype-demo.mp4" />
+</video>
+```
+
+**Performance Impact on Vercel:**
+- ✅ Videos in `/public/` are served via Vercel Edge Network (CDN)
+- ✅ Fast global delivery with automatic caching
+- ✅ No additional configuration needed
+- ✅ Free on all Vercel plans
+- ⚠️ 50MB file limit per deployment
+- ⚠️ Large videos may slow initial page load (use lazy loading)
 
 **Scroll Navigation:**
 ```tsx
@@ -654,6 +823,7 @@ Shows "My Goals" interface with:
 ```
 
 **Future Enhancements**:
+- [x] Replace static mockup with real prototype video (documented)
 - [ ] Interactive phone screen (hover over features to change content)
 - [ ] Connecting lines from cards to phone
 - [ ] 3D tilt effect on phone
@@ -1093,6 +1263,7 @@ git commit -m "docs: update development guide"
 
 ### Phase 1: Content Enhancement (Week 1)
 - [ ] Replace emoji placeholders with actual images/videos
+- [ ] Add real prototype video to Solution section phone mockup (see Section 3 documentation)
 - [ ] Add real video backgrounds to Hero and Mission sections
 - [ ] Create custom illustrations for feature cards
 - [ ] Add favicon and meta images

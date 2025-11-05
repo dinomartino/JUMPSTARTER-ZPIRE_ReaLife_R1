@@ -136,7 +136,7 @@ export default function Solution() {
           </div>
 
           {/* Feature cards positioned around phone */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 lg:gap-x-[600px] lg:absolute lg:inset-0 lg:top-0">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 lg:gap-x-[480px] lg:absolute lg:inset-0 lg:top-0">
             <FeatureCard
               position="top-left"
               number="01"
@@ -176,17 +176,28 @@ export default function Solution() {
         </div>
 
         {/* Key differentiators */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
+            className="relative group"
           >
-            <Card className="p-6 text-center bg-white/10 backdrop-blur-xl border-white/20 hover:border-white/40 transition-colors">
-              <Brain className="w-12 h-12 mx-auto mb-4 text-purple-300" />
-              <h3 className="font-bold text-lg mb-2 text-white">AI-Powered Breakdown</h3>
-              <p className="text-sm text-gray-300">Lowers cognitive load</p>
+            <Card className="relative p-8 text-center bg-white/90 backdrop-blur-xl border-2 border-gray-200 shadow-xl hover:shadow-2xl hover:border-gray-300 hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+              {/* Gradient background overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-500 to-pink-500 opacity-5" />
+
+              {/* Icon with gradient background */}
+              <div className="relative z-10 inline-flex items-center justify-center w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 shadow-lg">
+                <Brain className="w-8 h-8 text-white" />
+              </div>
+
+              <h3 className="relative z-10 font-bold text-xl mb-2 text-gray-900">AI-Powered Breakdown</h3>
+              <p className="relative z-10 text-base text-gray-600">Lowers cognitive load</p>
+
+              {/* Shine effect */}
+              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
             </Card>
           </motion.div>
 
@@ -195,11 +206,22 @@ export default function Solution() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
+            className="relative group"
           >
-            <Card className="p-6 text-center bg-white/10 backdrop-blur-xl border-white/20 hover:border-white/40 transition-colors">
-              <Heart className="w-12 h-12 mx-auto mb-4 text-pink-300" />
-              <h3 className="font-bold text-lg mb-2 text-white">Builds Action Inertia</h3>
-              <p className="text-sm text-gray-300">Focuses on the first step</p>
+            <Card className="relative p-8 text-center bg-white/90 backdrop-blur-xl border-2 border-gray-200 shadow-xl hover:shadow-2xl hover:border-gray-300 hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+              {/* Gradient background overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-pink-500 to-red-500 opacity-5" />
+
+              {/* Icon with gradient background */}
+              <div className="relative z-10 inline-flex items-center justify-center w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-pink-500 to-red-500 shadow-lg">
+                <Heart className="w-8 h-8 text-white" />
+              </div>
+
+              <h3 className="relative z-10 font-bold text-xl mb-2 text-gray-900">Builds Action Inertia</h3>
+              <p className="relative z-10 text-base text-gray-600">Focuses on the first step</p>
+
+              {/* Shine effect */}
+              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
             </Card>
           </motion.div>
 
@@ -208,11 +230,22 @@ export default function Solution() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
+            className="relative group"
           >
-            <Card className="p-6 text-center bg-white/10 backdrop-blur-xl border-white/20 hover:border-white/40 transition-colors">
-              <Smile className="w-12 h-12 mx-auto mb-4 text-cyan-300" />
-              <h3 className="font-bold text-lg mb-2 text-white">Positive Feedback Loop</h3>
-              <p className="text-sm text-gray-300">Replaces anxiety with achievement</p>
+            <Card className="relative p-8 text-center bg-white/90 backdrop-blur-xl border-2 border-gray-200 shadow-xl hover:shadow-2xl hover:border-gray-300 hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+              {/* Gradient background overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 to-blue-500 opacity-5" />
+
+              {/* Icon with gradient background */}
+              <div className="relative z-10 inline-flex items-center justify-center w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-500 shadow-lg">
+                <Smile className="w-8 h-8 text-white" />
+              </div>
+
+              <h3 className="relative z-10 font-bold text-xl mb-2 text-gray-900">Positive Feedback Loop</h3>
+              <p className="relative z-10 text-base text-gray-600">Replaces anxiety with achievement</p>
+
+              {/* Shine effect */}
+              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
             </Card>
           </motion.div>
         </div>

@@ -38,21 +38,37 @@ const FeatureCard = memo(function FeatureCard({
       initial={{ opacity: 0, ...getInitialPosition() }}
       animate={inView ? { opacity: 1, x: 0, y: 0 } : {}}
       transition={{ duration: 0.8, ease: 'easeOut' }}
-      className="relative p-8 rounded-2xl bg-dark-lighter border border-white/10 backdrop-blur group hover:border-white/20 transition-colors"
+      className="relative group"
     >
-      {/* Number badge */}
-      <div className={`absolute -top-4 -left-4 w-12 h-12 rounded-full bg-gradient-to-br ${gradient} flex items-center justify-center font-bold text-lg shadow-lg`}>
-        {number}
-      </div>
+      {/* Card with white background and glass effect */}
+      <div className="relative p-8 rounded-3xl bg-white/90 backdrop-blur-xl border-2 border-gray-200 shadow-xl hover:shadow-2xl hover:border-gray-300 hover:-translate-y-1 transition-all duration-300">
+        {/* Decorative gradient overlay */}
+        <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-5 rounded-3xl`} />
 
-      {/* Icon */}
-      <div className={`w-16 h-16 mb-6 rounded-xl bg-gradient-to-br ${gradient} bg-opacity-20 flex items-center justify-center`}>
-        <div className="text-3xl">{icon}</div>
-      </div>
+        {/* Corner gradient glow */}
+        <div className={`absolute -top-8 -right-8 w-32 h-32 bg-gradient-to-br ${gradient} rounded-full opacity-10 blur-2xl group-hover:opacity-20 transition-opacity duration-500`} />
 
-      {/* Content */}
-      <h3 className="text-2xl font-bold mb-3">{title}</h3>
-      <p className="text-gray-400 leading-relaxed">{description}</p>
+        {/* Content wrapper */}
+        <div className="relative z-10">
+          {/* Number and Icon in a unified header */}
+          <div className="flex items-center gap-3 mb-6">
+            {/* Number badge */}
+            <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gray-100 font-semibold text-xs text-gray-600">
+              {number}
+            </div>
+
+            {/* Icon */}
+            <div className="flex items-center justify-center w-10 h-10 text-gray-700">
+              {icon}
+            </div>
+          </div>
+
+          {/* Content */}
+          <h3 className="text-2xl font-bold mb-3 text-gray-900">{title}</h3>
+          <p className="text-gray-600 leading-relaxed">{description}</p>
+        </div>
+
+        </div>
     </motion.div>
   );
 });
