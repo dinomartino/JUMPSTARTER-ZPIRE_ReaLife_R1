@@ -151,36 +151,11 @@ export default function CTA() {
               {/* Right side - Phone Mockup */}
               <div className="flex justify-center lg:justify-end">
                 <PhoneMockup size="large" className="transform hover:scale-105 transition-transform duration-300">
-                  {/*
-                    TODO: Add your app screenshot here
-
-                    Instructions:
-                    1. Place your screenshot in: /public/images/app-screenshot.png
-                    2. Uncomment the Image import at the top of this file
-                    3. Uncomment the Image component below
-                    4. Remove the placeholder div
-
-                    Example:
-                    <Image
-                      src="/images/app-screenshot.png"
-                      alt="ReaLife App Screenshot"
-                      fill
-                      className="object-cover"
-                    />
-                  */}
-
-                  {/* Placeholder - Remove this div when you add your screenshot */}
-                  <div className="w-full h-full bg-gradient-to-br from-purple-100 via-pink-50 to-orange-50 flex items-center justify-center p-8">
-                    <div className="text-center space-y-4">
-                      <div className="w-20 h-20 mx-auto bg-gradient-to-br from-purple-500 to-pink-500 rounded-3xl flex items-center justify-center shadow-2xl">
-                        <span className="text-white font-bold text-4xl">R</span>
-                      </div>
-                      <div>
-                        <h3 className="font-bold text-gray-900 text-xl mb-2">ReaLife</h3>
-                        <p className="text-sm text-gray-500">App Screenshot Coming Soon</p>
-                      </div>
-                    </div>
-                  </div>
+                  <img
+                    src="/screenshots/cta-action.png"
+                    alt="RealLife App - Turn anxiety into action"
+                    className="w-full h-full object-cover object-top"
+                  />
                 </PhoneMockup>
               </div>
             </div>
