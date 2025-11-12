@@ -39,7 +39,7 @@ export default function CTA() {
         <div className="absolute inset-0 bg-gradient-to-tr from-purple-100/50 via-transparent to-blue-100/50 animate-pulse-slow" />
       </div>
 
-      <div className="relative z-10 w-full py-20 px-8 md:px-12 lg:px-16">
+      <div className="relative z-10 w-full py-20 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
           <div className="container mx-auto max-w-7xl">
             <div className="grid lg:grid-cols-2 gap-8 items-center">
               {/* Left side - Content */}
@@ -148,8 +148,8 @@ export default function CTA() {
                 </div>
               </div>
 
-              {/* Right side - Phone Mockup */}
-              <div className="flex justify-center lg:justify-end">
+              {/* Right side - Phone Mockup (hidden on mobile) */}
+              <div className="hidden lg:flex justify-center lg:justify-end">
                 <PhoneMockup size="large" className="transform hover:scale-105 transition-transform duration-300">
                   <img
                     src="/screenshots/cta-action.png"

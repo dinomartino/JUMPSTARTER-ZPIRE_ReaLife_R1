@@ -21,7 +21,7 @@ export default function Mission() {
       </WavyBackground>
 
       {/* Content */}
-      <div className="relative z-20 max-w-6xl mx-auto text-center px-6">
+      <div className="relative z-20 max-w-6xl mx-auto text-center px-4 sm:px-6">
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 backdrop-blur-sm mb-6">
           <span className="relative flex h-2 w-2">

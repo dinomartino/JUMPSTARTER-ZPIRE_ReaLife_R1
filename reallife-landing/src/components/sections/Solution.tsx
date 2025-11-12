@@ -64,8 +64,8 @@ export default function Solution() {
       </div>
 
       {/* Main solution showcase with phone mockup */}
-      <div className="container mx-auto px-8 relative z-20 mb-20">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-20 mb-20">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Left: Phone Mockup with actual screenshot */}
           <div className="flex justify-center lg:justify-end">
             <PhoneMockup size="large">
@@ -130,9 +130,9 @@ export default function Solution() {
       </div>
 
       {/* Key Benefits - 3 Column Layout */}
-      <div className="container mx-auto px-8 relative z-10">
-        <h3 className="text-2xl md:text-3xl font-bold text-white mb-12 text-center">Key Benefits</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10">
+        <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-8 md:mb-12 text-center">Key Benefits</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
           <div className="relative group">
             <Card className="relative p-8 text-center bg-white/90 backdrop-blur-xl border-2 border-gray-200 shadow-xl hover:shadow-2xl hover:border-gray-300 hover:-translate-y-1 transition-all duration-300 overflow-hidden h-full">
               {/* Gradient background overlay */}

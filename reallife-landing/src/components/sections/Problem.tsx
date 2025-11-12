@@ -24,22 +24,22 @@ export default function Problem() {
   }, []);
 
   return (
-    <section id="problem" className="min-h-screen py-24 md:py-32 relative bg-gradient-to-b from-red-50/30 via-orange-50/20 to-red-50/30 overflow-hidden" ref={ref}>
+    <section id="problem" className="min-h-screen py-16 md:py-24 lg:py-32 relative bg-gradient-to-b from-red-50/30 via-orange-50/20 to-red-50/30 overflow-hidden" ref={ref}>
       {/* Warning themed accent glow effects - Static for performance */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-red-200/30 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-orange-200/30 rounded-full blur-3xl" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-red-100/20 rounded-full blur-3xl" />
 
-    
 
-      <div className="container mx-auto text-center px-4 md:px-8 relative z-10">
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-12 md:mb-16 text-gray-900">
+
+      <div className="container mx-auto text-center px-4 sm:px-6 md:px-8 relative z-10">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-8 md:mb-12 lg:mb-16 text-gray-900 leading-tight">
           You're Not Weak.
           <br />
 
-          <span className="inline-flex items-center">
+          <span className="inline-flex items-center justify-center mt-2">
             <FuzzyText
-              fontSize="clamp(2rem, 5vw, 4rem)"
+              fontSize="clamp(1.75rem, 7vw, 4rem)"
               fontWeight={1000}
               color="#dc2626"
               enableHover={true}
@@ -52,25 +52,25 @@ export default function Problem() {
         </h2>
 
         {/* Stat Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 max-w-6xl mx-auto mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 lg:gap-10 max-w-6xl mx-auto mb-12 md:mb-16 lg:mb-20">
           <StatCard
             number="210M"
             label="people worldwide addicted to social media"
-            icon={<Users className="w-12 h-12" />}
+            icon={<Users className="w-10 h-10 md:w-12 md:h-12" />}
             gradient="from-purple-500 to-pink-500"
             subtitle="28x the population of Hong Kong"
           />
           <StatCard
             number="200B"
             label="daily views on YouTube Shorts alone"
-            icon={<Eye className="w-12 h-12" />}
+            icon={<Eye className="w-10 h-10 md:w-12 md:h-12" />}
             gradient="from-pink-500 to-orange-500"
             subtitle="That's 27 videos for every person on Earth"
           />
           <StatCard
             number={inView ? <CountUp end={4.5} decimals={1} duration={2} preserveValue={true} redraw={false} /> : 0}
             label="hours lost per day to mindless scrolling"
-            icon={<Clock className="w-12 h-12" />}
+            icon={<Clock className="w-10 h-10 md:w-12 md:h-12" />}
             gradient="from-orange-500 to-red-500"
             suffix=" hrs"
             subtitle="1,642 hours wasted annually"
@@ -80,9 +80,9 @@ export default function Problem() {
         {/* Animated phone mockups */}
         <div className="flex flex-col md:flex-row gap-8 md:gap-12 justify-center items-center max-w-4xl mx-auto">
           {/* Scrolling mockup */}
-          <div className="flex-1">
+          <div className="flex-1 w-full max-w-xs md:max-w-none">
             <PhoneMockup>
-              <div className="h-full bg-gradient-to-b from-gray-100 to-gray-200 p-4 overflow-hidden relative">
+              <div className="h-full bg-gradient-to-b from-gray-100 to-gray-200 p-3 md:p-4 overflow-hidden relative">
                 {/* Simulate endless scroll - infinite downward */}
                 <motion.div
                   animate={{
@@ -94,29 +94,29 @@ export default function Problem() {
                     ease: 'linear',
                     repeatType: 'loop'
                   }}
-                  className="space-y-4"
+                  className="space-y-3 md:space-y-4"
                   style={{ transform: 'translateZ(0)' }}
                 >
                   {/* Original posts */}
                   {Array.from({ length: isMobile ? 3 : 4 }).map((_, i) => (
-                    <div key={`original-${i}`} className="bg-white rounded-lg p-4 shadow-sm">
+                    <div key={`original-${i}`} className="bg-white rounded-lg p-3 md:p-4 shadow-sm">
                       <div className="flex items-center gap-2 mb-2">
-                        <div className="w-8 h-8 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full" />
-                        <div className="h-3 bg-gray-300 rounded w-24" />
+                        <div className="w-6 h-6 md:w-8 md:h-8 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full" />
+                        <div className="h-2 md:h-3 bg-gray-300 rounded w-20 md:w-24" />
                       </div>
-                      <div className="h-48 bg-gradient-to-br from-blue-200 to-purple-200 rounded-lg mb-2" />
+                      <div className="h-40 md:h-48 bg-gradient-to-br from-blue-200 to-purple-200 rounded-lg mb-2" />
                       <div className="h-2 bg-gray-300 rounded w-full mb-1" />
                       <div className="h-2 bg-gray-300 rounded w-3/4" />
                     </div>
                   ))}
                   {/* Duplicate posts for seamless loop */}
                   {Array.from({ length: isMobile ? 3 : 4 }).map((_, i) => (
-                    <div key={`duplicate-${i}`} className="bg-white rounded-lg p-4 shadow-sm">
+                    <div key={`duplicate-${i}`} className="bg-white rounded-lg p-3 md:p-4 shadow-sm">
                       <div className="flex items-center gap-2 mb-2">
-                        <div className="w-8 h-8 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full" />
-                        <div className="h-3 bg-gray-300 rounded w-24" />
+                        <div className="w-6 h-6 md:w-8 md:h-8 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full" />
+                        <div className="h-2 md:h-3 bg-gray-300 rounded w-20 md:w-24" />
                       </div>
-                      <div className="h-48 bg-gradient-to-br from-blue-200 to-purple-200 rounded-lg mb-2" />
+                      <div className="h-40 md:h-48 bg-gradient-to-br from-blue-200 to-purple-200 rounded-lg mb-2" />
                       <div className="h-2 bg-gray-300 rounded w-full mb-1" />
                       <div className="h-2 bg-gray-300 rounded w-3/4" />
                     </div>
@@ -124,13 +124,13 @@ export default function Problem() {
                 </motion.div>
               </div>
             </PhoneMockup>
-            <p className="text-gray-600 mt-4 text-sm md:text-base text-center font-medium">
+            <p className="text-gray-600 mt-3 md:mt-4 text-sm md:text-base text-center font-medium">
               Endless Scrolling
             </p>
           </div>
 
           {/* Swiping mockup */}
-          <div className="flex-1">
+          <div className="flex-1 w-full max-w-xs md:max-w-none">
             <PhoneMockup>
               <div className="h-full bg-black overflow-hidden relative">
                 {/* Simulate swipe-through stories/reels */}
@@ -200,14 +200,14 @@ export default function Problem() {
                 </motion.div>
               </div>
             </PhoneMockup>
-            <p className="text-gray-600 mt-4 text-sm md:text-base text-center font-medium">
+            <p className="text-gray-600 mt-3 md:mt-4 text-sm md:text-base text-center font-medium">
               Compulsive Swiping
             </p>
           </div>
         </div>
 
         {/* Description text */}
-        <p className="text-gray-600 mt-12 text-base md:text-lg max-w-2xl mx-auto text-center">
+        <p className="text-gray-600 mt-8 md:mt-12 text-sm sm:text-base md:text-lg max-w-2xl mx-auto text-center leading-relaxed px-2">
           This digital drain leads to loss of ambition, declining focus,
           and fuels anxiety and low self-worth.
         </p>
@@ -221,14 +221,14 @@ export default function Problem() {
           opacity: { delay: 2, duration: 0.5 },
           y: { repeat: Infinity, duration: 2, ease: "easeInOut" },
         }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer"
+        className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 cursor-pointer"
         onClick={() =>
           document
             .getElementById("solution")
             ?.scrollIntoView({ behavior: "smooth" })
         }
       >
-        <ChevronDown className="w-8 h-8 text-red-400" />
+        <ChevronDown className="w-6 h-6 md:w-8 md:h-8 text-red-400" />
       </motion.div>
     </section>
   );
